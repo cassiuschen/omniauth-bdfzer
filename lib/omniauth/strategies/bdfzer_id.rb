@@ -11,15 +11,13 @@ module OmniAuth
   module Strategies
     class Bdfzer < OmniAuth::Strategies::OAuth2
       # Give your strategy a name.
-      option :name, "bdfzer"
+      option :name, :bdfzer
 
       # This is where you pass the options you would pass when
       # initializing your consumer from the OAuth gem.
-      CUSTOM_PROVIDER_URL = 'http://localhost:8080'
       option :client_options, {
-        :site =>  CUSTOM_PROVIDER_URL,
-        :authorize_url => "#{CUSTOM_PROVIDER_URL}/auth/bdfzer_id/authorize",
-        :access_token_url => "#{CUSTOM_PROVIDER_URL}/auth/bdfzer_id/access_token"
+        :site =>  "http://saas.bdfzer.com:4567",
+        :authorize_url => "/oauth/authorize"
       }
 
       # These are called after authentication has succeeded. If
@@ -43,7 +41,7 @@ module OmniAuth
       end
 
       def raw_info
-        @raw_info ||= access_token.get("/auth/bdfzer_id/user.json?oauth_token=#{access_token.token}").parsed
+        @raw_info ||= access_token.get("/api/v1/omniauth.json").parsed
       end
     end
   end
