@@ -16,7 +16,7 @@ module OmniAuth
       # This is where you pass the options you would pass when
       # initializing your consumer from the OAuth gem.
       option :client_options, {
-        :site =>  "http://saas.bdfzer.com:4567",
+        :site =>  "http://auth.bdfzer.com",
         :authorize_url => "/oauth/authorize"
       }
 
