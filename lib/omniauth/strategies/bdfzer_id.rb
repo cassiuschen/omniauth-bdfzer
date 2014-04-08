@@ -30,13 +30,13 @@ module OmniAuth
       info do
         {
           :email => raw_info['email']
+          :name => raw_info['extra']['name']
         }
       end
 
       extra do
         {
-          :name => raw_info['extra']['name'],
-          :pku_id => raw_info['extra']['pku_id']
+          :raw_info => raw_info
         }
       end
 
