@@ -18,18 +18,23 @@ module OmniAuth
       # additional calls (if the user id is returned with the token
       # or as a URI parameter). This may not be possible with all
       # providers.
-      uid{ raw_info['extra']['pku_id'] }
+      uid{ raw_info['uid'] }
 
       info do
         {
           :email => raw_info['email'],
-          :name => raw_info['extra']['name']
+          :name => raw_info['info']['name'],
+          :phone => raw_info['info']['phone']
         }
       end
 
       extra do
         {
-          :raw_info => raw_info
+          :raw_info => raw_info,
+          :grade => raw_info['extra']['grade'],
+          :unit => raw_info['extra']['unit'],
+          :sex => raw_info['extra']['sex'],
+          :contact => raw_info['extra']['contact']
         }
       end
 
